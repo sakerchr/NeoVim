@@ -52,3 +52,6 @@ vim.api.nvim_set_keymap("n", "<leader>di", ":DapStepInto<CR>", { noremap = true 
 
 -- LSP refactor
 vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename)
+
+-- Terminal
+vim.keymap.set("n", "<leader>t", ":term<CR>i");
