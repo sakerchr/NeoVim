@@ -42,4 +42,13 @@ vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
 
+-- Debugger
+vim.api.nvim_set_keymap("n", "<leader>dt", ":lua require('dapui').toggle()<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>db", ":DapToggleBreakpoint<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>dc", ":DapContinue<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>dr", ":lua require('dapui').toggle({reset = true})<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>do", ":DapStepOver<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>di", ":DapStepInto<CR>", { noremap = true })
+
+-- LSP refactor
 vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename)

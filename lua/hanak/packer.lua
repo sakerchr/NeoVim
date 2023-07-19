@@ -75,15 +75,9 @@ return require('packer').startup(function(use)
     use('Mofiqul/vscode.nvim')
 
     use('ThePrimeagen/vim-be-good')
-    --    use("mfussenegger/nvim-dap")
-    --    use {
-        --        "nvim-neotest/neotest",
-        --        requires = {
-            --            "nvim-lua/plenary.nvim",
-            --            "nvim-treesitter/nvim-treesitter",
-            --            "antoinemadec/FixCursorHold.nvim",
-            --             "Issafalcon/neotest-dotnet"
-            --        }
-            --    }
+
+    -- Debugging
+    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+    use('theHamsta/nvim-dap-virtual-text')
 
 end)
