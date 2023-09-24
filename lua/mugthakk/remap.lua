@@ -1,6 +1,5 @@
-
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -41,14 +40,6 @@ vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
-
--- Debugger
-vim.api.nvim_set_keymap("n", "<leader>dt", ":lua require('dapui').toggle()<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>db", ":DapToggleBreakpoint<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>dc", ":DapContinue<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>dr", ":lua require('dapui').toggle({reset = true})<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>do", ":DapStepOver<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>di", ":DapStepInto<CR>", { noremap = true })
 
 -- LSP refactor
 vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename)
