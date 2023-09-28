@@ -1,4 +1,4 @@
-return {
+require("lazy").setup({
     -- Code parsing
     {
         'nvim-treesitter/nvim-treesitter',
@@ -10,8 +10,8 @@ return {
         { 'VonHeikemen/lsp-zero.nvim', branch = 'v3.x', lazy = true },
 
         --- Uncomment these if you want to manage LSP servers from neovim
-        -- {'williamboman/mason.nvim'},
-        -- {'williamboman/mason-lspconfig.nvim'},
+        {'williamboman/mason.nvim'},
+        {'williamboman/mason-lspconfig.nvim'},
 
         -- LSP Support
         {
@@ -44,7 +44,13 @@ return {
     { 'ThePrimeagen/harpoon', lazy = true },
 
     -- Styling
-    { 'Mofiqul/vscode.nvim',  lazy = true },
+    {
+        "folke/tokyonight.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
+      },
+    { 'rose-pine/neovim', name = 'rose-pine'},
 
     -- Util
     {
@@ -61,4 +67,4 @@ return {
         }
     },
     { 'ThePrimeagen/vim-be-good', lazy = true },
-}
+})

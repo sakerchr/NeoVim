@@ -1,33 +1,52 @@
 local lsp = require("lsp-zero")
 
-lsp.preset("recommended")
 
-lsp.ensure_installed({
-  'tsserver',
-  'omnisharp',
-  'lua_ls'
+local lsp_zero = require('lsp-zero')
+
+lsp_zero.on_attach(function(client, bufnr)
+  -- see :help lsp-zero-keybindings
+  -- to learn the available actions
+  lsp_zero.default_keymaps({buffer = bufnr})
+end)
+
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  -- Replace the language servers listed here 
+  -- with the ones you want to install
+  ensure_installed = {'tsserver', 'omnisharp', 'lua_ls'},
+  handlers = {
+    lsp_zero.default_setup,
+    lua_ls = function()
+      local lua_opts = lsp_zero.nvim_lua_ls()
+      require('lspconfig').lua_ls.setup(lua_opts)
+    end,
+  },
 })
-
--- Fix Undefined global 'vim'
-lsp.nvim_workspace()
-
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 
-local cmp_mappings = lsp.defaults.cmp_mappings({
-  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-  ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-  ['<Enter>'] = cmp.mapping.confirm({ select = true }),
-  -- ["<C-Space>"] = cmp.mapping.complete(),
-})
+local cmp = require('cmp')
+local cmp_action = require('lsp-zero').cmp_action()
 
-cmp_mappings['<Tab>'] = nil
-cmp_mappings['<S-Tab>'] = nil
-
-lsp.setup_nvim_cmp({
-  mapping = cmp_mappings,
-  preselect = cmp.PreselectMode.Item
+cmp.setup({
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
+  mapping = cmp.mapping.preset.insert({
+    -- ['<C-Space>'] = cmp.mapping.complete(),
+    ['<Enter>'] = cmp.mapping.confirm({ select = true }),
+    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+    -- ['<C-f>'] = cmp_action.luasnip_jump_forward(),
+    -- ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+  }),
+  sources = {
+    {name = 'nvim_lsp'},
+  }
 })
 
 lsp.set_preferences({
