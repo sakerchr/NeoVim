@@ -7,11 +7,11 @@ require("lazy").setup({
     },
     { 'nvim-treesitter/nvim-treesitter-context', lazy = true },
     {
-        { 'VonHeikemen/lsp-zero.nvim', branch = 'v3.x', lazy = true },
+        { 'VonHeikemen/lsp-zero.nvim',        branch = 'v3.x', lazy = true },
 
         --- Uncomment these if you want to manage LSP servers from neovim
-        {'williamboman/mason.nvim'},
-        {'williamboman/mason-lspconfig.nvim'},
+        { 'williamboman/mason.nvim' },
+        { 'williamboman/mason-lspconfig.nvim' },
 
         -- LSP Support
         {
@@ -31,9 +31,10 @@ require("lazy").setup({
     },
 
     -- Navigation
-    { 'nvim-telescope/telescope.nvim', lazy = true, dependencies = { 'nvim-lua/plenary.nvim' } },
+    { 'nvim-telescope/telescope.nvim',           lazy = true, dependencies = { 'nvim-lua/plenary.nvim' } },
     {
-        "folke/trouble.nvim", lazy = true,
+        "folke/trouble.nvim",
+        lazy = true,
         dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {
             -- your configuration comes here
@@ -41,7 +42,9 @@ require("lazy").setup({
             -- refer to the configuration section below
         },
     },
-    { 'ThePrimeagen/harpoon', lazy = true },
+    { 'ThePrimeagen/harpoon',    lazy = true },
+    { "akinsho/toggleterm.nvim", version = '*', lazy = true },
+
 
     -- Styling
     {
@@ -49,8 +52,8 @@ require("lazy").setup({
         lazy = false,
         priority = 1000,
         opts = {},
-      },
-    { 'rose-pine/neovim', name = 'rose-pine'},
+    },
+    { 'rose-pine/neovim',         name = 'rose-pine' },
 
     -- Util
     {
@@ -68,3 +71,4 @@ require("lazy").setup({
     },
     { 'ThePrimeagen/vim-be-good', lazy = true },
 })
+

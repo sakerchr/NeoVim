@@ -9,11 +9,30 @@ local wk = require("which-key")
 -- and hide <leader>1
 
 wk.register({
-    t = {
-        name = "telescope",
-        f = { "find File" },
-        g = { "Git files" },
-        s = { "grep String" },
-        h = { "Help tags" },
+    f = {
+        name = "Telescope",
+        f = "find File"
+    },
+    h = {
+        name = "Harpoon",
+        a = "Harpoon Add",
+        m = "Harpoon Menu"
+    },
+    v = {
+        name = "View (LSP)",
+        h = "LSP Hover",
+        s = "LSP workspace Symbol",
+        f = "LSP open Float",
+        r = "LSP References"
+    },
+    g = {
+        name = "Git / Grep / Go (LSP)",
+        f = "git Files",
+        s = "grep String",
+        d = "LSP go Definition"
+    },
+    c = {
+        name = "Code (LSP)",
+        a = "LSP code Action"
     },
 }, { prefix = "<leader>" })
